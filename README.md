@@ -6,6 +6,22 @@
 
 <h1 align="center">Prova Técnica Python🐍 Jr.👶🏻</h1><br>
 
+Tabela de conteúdos
+=================
+<!--ts-->
+* Tabela de conteúdos
+  * [Agradecimentos](#agradecimentos)
+* Questões
+  * [Questão 1](#questão-1)
+  * [Questão 2](#questão-2)
+  * [Questão 3](#questão-3)
+  * [Questão 4](#questão-4)
+  * [Questão 5](#questão-5)
+  * [Questão 6](#questão-6)
+  * [Questão 7](#questão-7)
+<!--te-->
+
+## Agradecimentos:
 <p align="justify">Gostaria de primeiramente agradecer ao Gabriel Gobbi equipe da  🔗<a href="https://sistemas.cotefacil.com/CTFLLogan-webapp/login.jsf">@cotefacil</a>, por me conceder a oportunidade de realizar este teste, pois aprendi muito</p><br>
 
 ## Questão 1:
