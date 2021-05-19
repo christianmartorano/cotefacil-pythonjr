@@ -1,0 +1,3 @@
+host 	=> 52.200.142.116
+usuário => ctflteste
+senha 	=> YdrTXPK#mcG7KUT#H@$P

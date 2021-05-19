@@ -1,0 +1,17 @@
+Amazon Private Network's permite que você crie uma topologia de rede privada, na qual
+você tem controle de sua range de IP's privados, esta rede pode ser segmentada em várias
+subnets.
+
+As subnets são endereçamentos de IP's privados que você deseja usar com base nas classes A, B e classes
+ele tem limitação de maior subnet é /16 (255.255.0.0) e o menor range /28 (255.255.255.240), na
+subnet reservamos 1 IP para o Gateway de rede e 1 para Broadcast, além disso os 3 primeiros IP'segmentada
+são reservados para o uso da AWS e não devem ser usados no ambiente.
+
+Os Security Groups atuam como firewall virtual, que controle o tráfego inbound e outbound é
+possível relacionar até 5 security groups para a instância. O escopo de atuação do Security
+Group é de instâncias, ou seja é possível ter diversas instâncias em uma mesma subnet mas com
+regras de security groups totalmente diferentes, caso não seja relacionado nenhum security 
+group para a instância no momento da criação, ela assumirá o security group default da VPC.
+Os security Groups são stateful, isso significa quando é liberada uma regra inbound, o tráfego
+de resposta para conexões dessa regra será automaticamente liberado, outra característica do 
+security groups é que ele permite somente regas de ALLOW, a política default é DENY.
