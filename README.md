@@ -51,7 +51,7 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 <p align="justify">Capturei uma variável PUBLIC_KEY que se encontra no código fonte da página para tentar utiliza-la como chave para assinar o request com o JSON:</p><br>
 
 ```
-"{"usuario_cnpj":"04.502.445/0001-20","usuario_senha":"85243140","eub":"","recaptchaLoginToken":null}"
+"{"usuario_cnpj":"CNPJ","usuario_senha":"SENHA","eub":"","recaptchaLoginToken":null}"
 ```
 <p align="justify">Porém o site começa a pedir o Captcha quando o acesso é incorreto.</p><br>
 
