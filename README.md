@@ -6,19 +6,19 @@
 
 <h1 align="center">Prova Técnica Python🐍 Jr.👶🏻</h1><br>
 
-Tabela de conteúdos
+🏁 Tabela de conteúdos
 =================
 <!--ts-->
 * Tabela de conteúdos
-  * [Agradecimentos](#agradecimentos)
+  * 👉[Agradecimentos](#agradecimentos)
 * Questões
-  * [Questão 1](#questão-1)
-  * [Questão 2](#questão-2)
-  * [Questão 3](#questão-3)
-  * [Questão 4](#questão-4)
-  * [Questão 5](#questão-5)
-  * [Questão 6](#questão-6)
-  * [Questão 7](#questão-7)
+  * 👉[Questão 1](#questão-1)
+  * 👉[Questão 2](#questão-2)
+  * 👉[Questão 3](#questão-3)
+  * 👉[Questão 4](#questão-4)
+  * 👉[Questão 5](#questão-5)
+  * 👉[Questão 6](#questão-6)
+  * 👉[Questão 7](#questão-7)
 <!--te-->
 
 ## Agradecimentos:
@@ -39,14 +39,21 @@ Tabela de conteúdos
 
 <p align="justify">Passando no Body da requisição o parametro data com o valor criptografado, conforme exemplo abaixo:</p><br>
 
-<code>
+```
 data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2987043177d512869e843f4982ed5f852677414f0290316e867279df1362f54c69f90b2317c6cc0b2a9085c1f8f66c56c385b4747125bd8baddbcac1b28c338f3a21bf1c494a8372b90e6331f4298d9b8054dd688fe2727a4ec91c7a93830138adaaac1ef83ac441531bbc7ecba590
-</code>
+```
 <br>
 <br>
 <p align="justify">Tentei recriar essa hash usando a lib pynacl utilizando o usuário e senha que nos foi passado no teste, utilizando o encoding hexadecimal e várias combinações de hash como <b>sha512</b> porém não tive sucesso.</p><br>
 
 <p align="justify">Tentei criar um robô utilizando o selenium wire, que grava as requisições realizadas pelo Browser pois descobri em meus testes que o valor de data continua válido para ser utilizado mais de uma vez durante um espaço de tempo, porém devido ao tempo do teste não consegui concluir.</p><br>
+
+<p align="justify">Capturei uma variável PUBLIC_KEY que se encontra no código fonte da página para tentar utiliza-la como chave para assinar o request com o JSON:</p><br>
+
+```
+"{"usuario_cnpj":"04.502.445/0001-20","usuario_senha":"85243140","eub":"","recaptchaLoginToken":null}"
+```
+<p align="justify">Porém o site começa a pedir o Captcha quando o acesso é incorreto.</p><br>
 
  - [x] Task incompleta
  - [ ] Task completed
@@ -109,3 +116,16 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 
 - [ ] Task incompleta
 - [x] Task completed
+
+	
+### Autor---
+
+ <img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/380327?s=460&u=61b426b901b8fe02e12019b1fdb67bf0072d4f00&v=4" width="100px;" alt=""/>
+ <br>
+ <sub><b>Christian Santos Martorano</b></sub>
+
+Feito por Christian Santos Martorano 👋🏽 Entre em contato!
+
+[![Twitter Badge](https://img.shields.io/badge/-@tgmarinho-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/tgmarinho)](https://twitter.com/tgmarinho) 
+[![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/tgmarinho/) 
+[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
