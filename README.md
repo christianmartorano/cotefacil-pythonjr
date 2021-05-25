@@ -118,10 +118,9 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 - [x] Task completed
 
 	
-### Autor---
+## Autor
 
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/28970494?v=4" width="100px;" alt="Christian Santos Martorano - Avatar"/>
- <br>
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/28970494?v=4" width="100px;" alt="Christian Santos Martorano - Avatar"/> 
  <sub><b>Christian Santos Martorano</b></sub>
 
 Feito por Christian Santos Martorano 👋🏽 Entre em contato!
