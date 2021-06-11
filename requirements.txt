@@ -1,0 +1,5 @@
+requests
+selenium
+pynacl
+beautifulsoup4
+Scrapy

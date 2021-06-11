@@ -1,44 +1,48 @@
-import requests
-
+import json
 from bs4 import BeautifulSoup
 
+
 def crawler_categories(url, session):
-    
-    product = {}
-    pagina  = 0
-    arr_products = []    
+    pagina = 0
+    arr_products = []
 
     with session as s:
 
         while True:
-            pagina       = pagina + 1
+            pagina += 1
             url_paginada = "{0}?p={1}".format(url, pagina)
-                
-            reponse = s.get(url_paginada)
+
+            response = s.get(url_paginada)
             print(f">>>Requisitando a página => {url_paginada}")
 
-            product = BeautifulSoup(response.text, 'html.parser').find_all('div', {'class': 'box-produto box-catalago box-catalago-vitrine'})            
-            for p in product:
-                product['description'] = p.img.get('title').upper().strip()                
-                product['image_url']   = p.img.get('data-src')
-                product['manufacturer']= p.find('div', {'class': 'produto-marca mb-1'}).text.upper().strip()
+            if BeautifulSoup(response.text, 'html.parser').find('p', {'class': 'py-5 text-center nada-encontrado'}):
+                break
+
+            products_elements = BeautifulSoup(response.text, 'html.parser').find_all('div', {
+                'class': 'box-produto box-catalago box-catalago-vitrine'})
+            for p in products_elements:
+                product = dict(description=p.img.get('title').upper().strip(), image_url=p.img.get('data-src'),
+                               manufacturer=p.find('div', {'class': 'produto-marca mb-1'}).text.upper().strip())
                 arr_products.append(product)
 
-                print(f">>>Capturando produto => {product}")
+        return arr_products
+
+
+def show_products(products):
+    print(f">>>Foram localizados {len(products)} produtos")
+    for product in products:
+        print(f"\n>>>Produto capturado => {product}")
+
 
 def crawler(session, url):
-
     with session as s:
-        
-        response  = s.get(url)
-        response  = s.get(url)
-        #list_menu = BeautifulSoup(response.text, 'html.parser').find_all('li', {"class": "lista-menu-itens"})
-        list_menu = BeautifulSoup(response.text, 'html.parser').find_all('ul', {'class': 'hover-menu'})
-        #print(BeautifulSoup(response.text, 'html.parser'))
-        #print(f">>>Capturando Links dos Menus => {list_menu}")
-        
+        response = s.get(url)
+        list_menu = BeautifulSoup(response.text, 'html.parser').find_all('li', {"class": "lista-menu-itens"})
         for lst in list_menu:
-            print(f"{lst}")
-            #url = lst.find('a').get('href')
-            #print(">>>Capturando produtos da Categoria => {0} / URL => {1}".format(lst.text.replace('\n', '').strip(), url))
-            #crawler_categories(url, s)
+            url = lst.find('a').get('href')
+            print("\n>>>Capturando produtos da Categoria => {0}".format(lst.text.replace('\n', '').strip()))
+            arr_products = crawler_categories(url, s)
+
+    show_products(arr_products)
+
+    return True

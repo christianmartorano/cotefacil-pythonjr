@@ -18,23 +18,24 @@ HELP = '''
 
 '''
 
+
 def main():
-    
     print(BANNER)
 
     try:
         author = sys.argv[1]
-    except IndexError as e:        
+    except IndexError as e:
         print(HELP)
         return False
 
     no_error, params = read_config.read()
-    
+
     driver = create_driver.create()
 
     crawler.get_quotes(driver, params['url'], author)
-    
+
     return True
 
-if __name__ == "__main__":    
+
+if __name__ == "__main__":
     main()

@@ -1,5 +1,9 @@
 .scrapy
-__pycache__/
+**__pycache__/
 *.pyc
 *.exe
 *.log
+*.lock
+*.jl
+.idea/
+Pipfile

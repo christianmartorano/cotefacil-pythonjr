@@ -11,3 +11,4 @@ from itemadapter import ItemAdapter
 class Questao2Pipeline:
     def process_item(self, item, spider):
         return item
+

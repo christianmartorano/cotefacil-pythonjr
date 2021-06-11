@@ -44,19 +44,25 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 ```
 <br>
 <br>
-<p align="justify">Tentei recriar essa hash usando a lib pynacl utilizando o usuário e senha que nos foi passado no teste, utilizando o encoding hexadecimal e várias combinações de hash como <b>sha512</b> porém não tive sucesso.</p><br>
 
-<p align="justify">Tentei criar um robô utilizando o selenium wire, que grava as requisições realizadas pelo Browser pois descobri em meus testes que o valor de data continua válido para ser utilizado mais de uma vez durante um espaço de tempo, porém devido ao tempo do teste não consegui concluir.</p><br>
-
-<p align="justify">Capturei uma variável PUBLIC_KEY que se encontra no código fonte da página para tentar utiliza-la como chave para assinar o request com o JSON:</p><br>
+<p align="justify">Capturei a variável PUBLIC_KEY que se encontra no código fonte da página utilizando Regex utilizei a lib pynacl pra criar SealedBox com o JSON abaixo:</p><br>
 
 ```
 "{"usuario_cnpj":"CNPJ","usuario_senha":"SENHA","eub":"","recaptchaLoginToken":null}"
 ```
-<p align="justify">Porém o site começa a pedir o Captcha quando o acesso é incorreto.</p><br>
 
- - [x] Task incompleta
- - [ ] Task completed
+```
+def encrypt_data(user, password, public_key):
+    _box = SealedBox(PublicKey(public_key, encoder=HexEncoder))
+    return _box.encrypt(json.dumps(
+        {'usuario_cnpj': f"{user}", 'usuario_senha': f"{password}", 'eub': '', 'recaptchaLoginToken': None}).encode()
+                        ).hex()
+```
+
+<p align="justify">Após isso relizei o login no site e o crawler dos produtos.</p><br>
+
+ - [ ] Task incompleted
+ - [x] Task completed
 
 ## Questão 2
 <br>
@@ -64,17 +70,35 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 
 <p align="justify">Tive a oportunidade de conhecer este framework ao qual não havia trabalhado anteriormente em meus estudos descobri que ele é altamente escalonável e pretendo utilizá-lo em meus projetos.</p>
 
-<p align="justify">Consegui realizar o login na plataforma utilizando spider, passando como parâmetro no body da requisição um json com as chaves:</p>
+<p align="justify">Consegui realizar o login na plataforma utilizando spider, passando como parâmetro no body da requisição um json com as chaves e modificando o header para aceitar o <i>Content-Type: application/json</i>:</p>
 
 * usuario
 * senha
 
-***E modificando o Header incluindo o Content-Type: application/json***
 
-<p align="justify">Não tive tempo hábil de estudar o framwork a fundo, para decifrar o porque quando fazia o fetch para a url ele me retornava o javascript inicial da página ao invés da página em si.</p><br>
+<p align="justify">Após o login inicial foi necessário interagir com a api do site através da url <i>https://peapi.servimed.com.br</i></p><br>
+<p align="justify">Outro desafio encontrado foi construir o header da requisição que utilizava 3 parâmetros para efetuar as requisições com a API, são eles:</p>
 
-- [x] Task incompleta
-- [ ] Task completed
+```
+  Content-Type: application/json,
+  Accesstoken: @token_jwt
+  Loggeduser: @codigo_usuario
+```
+<p align="justify">No caso do Loggeduser foi necessário somente guardar a resposta da API do site após o logon, que este mesmo traz as informações de logon.
+Já no caso do Accesstoken, foi necessário pegar o Set-Cookie da requisição com o token de acesso e utilizar a biblioteca jwt, para obter o token da seguinte forma: 
+</p>
+
+```
+def get_access_token(self, value):
+  access_token = [c for c in value if "accesstoken" in str(c)]
+  access_token_jwt = self.jwt.decode(access_token[0].__str__().split('=')[1].split(';')[0], None, None)
+  return access_token_jwt['token']
+```
+<p align="justify">Após isso foi necessário somente realizar as interações com a API do site utilizando a Spider e salvar o retorno dos pedidos em um arquivo <b>.JSON</b>
+</p>
+
+- [ ] Task incompleted
+- [x] Task completed
 
 ## Questão 3
 <br>
@@ -82,21 +106,21 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 
 <p align="justify">Neste exercício utilizei também uma Proxy, para capturar todos os requests realizados entre o 🖥️Client e o Server, nos requests realizados foi capturado o api_token parâmetro required , para realizar todas os requests no site.</p><br>
 
- - [ ] Task incompleta
+ - [ ] Task incompleted
  - [x] Task completed
 
 ## Questão 4
 <br>
 <p align="justify">Foi pedido para realizar o Download de um projeto feito em java um <i>Connector-FTP.jar</i> , para realizar essa task, realizei o disassembly do arquivo .jar e no código fonte consegui capturar os parâmetros para logon, como o 🖥️ host / 🤵 user / 🔑 password , após isso conectei ao FTP utilizando um Client e realizar o Download do arquivo <b>"Great Job .txt"</b></p><br>
 
- - [ ] Task incompleta
+ - [ ] Task incompleted
  - [x] Task completed
 
 ## Questão 5
 <br>
 <p align="justify">Foi pedido para criar uma estrutura de árvore em Python🐍 neste exercício tive oportunidade de relembrar um pouco sobre estrutura de dados, realizando a pesquisa sobre 🌳árvores binárias.</p><br>
 
- - [ ] Task incompleta
+ - [ ] Task incompleted
  - [x] Task completed
 
 ## Questão 6
@@ -107,14 +131,14 @@ data=9e7fc4c1430f828527c92979288785717f6b4ad08b1c5c6462c8bd2be5e94334c46241a33d2
 <img width="460" height="300" src="https://media.giphy.com/media/ZOjUa4QAhQfi5N56mT/giphy.gif">
 </p><br>
 
- - [ ] Task incompleta
+ - [ ] Task incompleted
  - [x] Task completed
 
 ## Questão 7
 <br>
 <p align="justify">Foi pedido uma breve explicação sobre alguns serviços da Amazon ☁️Cloud.</p><br>
 
-- [ ] Task incompleta
+- [ ] Task incompleted
 - [x] Task completed
 
 	

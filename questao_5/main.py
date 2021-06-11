@@ -1,3 +1,5 @@
+from classes import tree
+
 BANNER = '''
        ###        
       #o###       
@@ -7,16 +9,13 @@ BANNER = '''
      # }|{  #     
        }|{        '''
 
-from classes import tree
 
 def main():
-    
     print(BANNER)
 
     raiz = tree.Tree(9, 5, 1)
     print(f"{raiz.__str__()}")
-    
-    raiz.search_order()
 
-if __name__ == "__main__":    
+
+if __name__ == "__main__":
     main()
