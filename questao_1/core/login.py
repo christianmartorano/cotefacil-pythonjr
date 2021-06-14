@@ -30,7 +30,7 @@ def get_key(session, url):
             for s_line in script_line.string.split('\n'):
                 m_search = re.search(r'.*\b(\w*PUBLIC_KEY\w*)\b.*', s_line)
                 if m_search:
-                    print(f">>> Localizou a Key => {m_search.string}")
+                    print(f">>>Localizou a Key => {m_search.string}")
                     return m_search.string.split('=')[-1].strip().replace(';', '').replace('"', '')
 
 
