@@ -31,8 +31,8 @@ class ServimedSpider(InitSpider):
             url=url,
             method='POST',
             body=json.dumps({
-                'usuario': 'juliano@farmaprevonline.com.br',
-                'senha': 'a007299A'
+                'usuario': '',
+                'senha': ''
             }),
             headers={
                 'Content-Type': 'application/json'
